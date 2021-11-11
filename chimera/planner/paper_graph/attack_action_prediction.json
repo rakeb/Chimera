@@ -1,0 +1,191 @@
+{
+  "Phishing_Spearphishing_Attachment": {
+    "execute": {
+      "probability": 1.0
+    }
+  },
+  "User_Execution_Malicious_File": {
+    "setFileAttribute": {
+      "probability": 0.41
+    },
+    "addToRegistryRunKeys": {
+      "probability": 0.41
+    },
+    "tasklist": {
+      "probability": 0.06
+    },
+    "queryRegistry": {
+      "probability": 0.06
+    },
+    "listDir": {
+      "probability": 0.06
+    }
+  },
+  "User_Execution_in_HE": {
+    "setFileAttribute": {
+      "probability": 0.41
+    },
+    "addToRegistryRunKeys": {
+      "probability": 0.41
+    },
+    "tasklist": {
+      "probability": 0.06
+    },
+    "queryRegistry": {
+      "probability": 0.06
+    },
+    "listDir": {
+      "probability": 0.06
+    }
+  },
+  "Hide_Artifacts_Hidden_Files_and_Directories": {
+    "addToRegistryRunKeys": {
+      "probability": 0.1
+    },
+    "tasklist": {
+      "probability": 0.15
+    },
+    "queryRegistry": {
+      "probability": 0.25
+    },
+    "listDir": {
+      "probability": 0.5
+    }
+  },
+  "Registry_Run_Keys_Startup_Folder": {
+    "setFileAttribute": {
+      "probability": 0.1
+    },
+    "tasklist": {
+      "probability": 0.15
+    },
+    "queryRegistry": {
+      "probability": 0.25
+    },
+    "listDir": {
+      "probability": 0.5
+    }
+  },
+  "Software_Discovery": {
+    "tasklist": {
+      "probability": 0.05
+    },
+    "queryRegistry": {
+      "probability": 0.1
+    },
+    "listDir": {
+      "probability": 0.2
+    },
+    "copy": {
+      "probability": 0.65
+    }
+  },
+  "Credentials_in_Registry": {
+    "tasklist": {
+      "probability": 0.1
+    },
+    "queryRegistry": {
+      "probability": 0.05
+    },
+    "listDir": {
+      "probability": 0.2
+    },
+    "copy": {
+      "probability": 0.65
+    }
+  },
+  "File_and_Directory_Discovery": {
+    "tasklist": {
+      "probability": 0.1
+    },
+    "queryRegistry": {
+      "probability": 0.2
+    },
+    "listDir": {
+      "probability": 0.05
+    },
+    "copy": {
+      "probability": 0.65
+    }
+  },
+  "Honey_Software_Discovery": {
+    "tasklist": {
+      "probability": 0.05
+    },
+    "queryRegistry": {
+      "probability": 0.1
+    },
+    "listDir": {
+      "probability": 0.2
+    },
+    "copy": {
+      "probability": 0.65
+    }
+  },
+  "Honey_Credentials_in_Registry": {
+    "tasklist": {
+      "probability": 0.1
+    },
+    "queryRegistry": {
+      "probability": 0.05
+    },
+    "listDir": {
+      "probability": 0.2
+    },
+    "copy": {
+      "probability": 0.65
+    }
+  },
+  "Honey_File_and_Directory_Discovery": {
+    "tasklist": {
+      "probability": 0.1
+    },
+    "queryRegistry": {
+      "probability": 0.2
+    },
+    "listDir": {
+      "probability": 0.05
+    },
+    "copy": {
+      "probability": 0.65
+    }
+  },
+  "Data_Staged": {
+    "listDir": {
+      "probability": 0.06
+    },
+    "tasklist": {
+      "probability": 0.06
+    },
+    "queryRegistry": {
+      "probability": 0.06
+    },
+    "compress": {
+      "probability": 0.5
+    },
+    "HTTP": {
+      "probability": 0.32
+    }
+  },
+  "Honey_Data_Staged": {
+    "listDir": {
+      "probability": 0.06
+    },
+    "tasklist": {
+      "probability": 0.06
+    },
+    "queryRegistry": {
+      "probability": 0.06
+    },
+    "compress": {
+      "probability": 0.5
+    },
+    "HTTP": {
+      "probability": 0.32
+    }
+  }
+}
+
+
+
+

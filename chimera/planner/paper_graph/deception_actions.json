@@ -1,0 +1,138 @@
+{
+  "migrateInHE": {
+    "attack_action": ["execute"],
+    "effectiveness": 0.95,
+    "cost": 95,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 1,
+      "depletion": 1,
+      "discovery": 1
+    }
+  },
+  "doNothing": {
+    "attack_action": [],
+    "effectiveness": 0.0,
+    "cost": 70,
+    "benefit": {
+      "diversion": 0,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 0
+    }
+  },
+  "honeySwList": {
+    "attack_action": ["tasklist"],
+    "effectiveness": 0.8,
+    "cost": 65,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 1
+    }
+  },
+  "honeyRegistry": {
+    "attack_action": ["queryRegistry"],
+    "effectiveness": 0.75,
+    "cost": 70,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 1
+    }
+  },
+  "redirectToHoneyDir": {
+    "attack_action": ["listDir"],
+    "effectiveness": 0.85,
+    "cost": 72,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 1,
+      "depletion": 1,
+      "discovery": 1
+    }
+  },
+  "honeyCopy": {
+    "attack_action": ["copy"],
+    "effectiveness": 0.75,
+    "cost": 75,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 1
+    }
+  },
+  "deleteData": {
+    "attack_action": ["copy"],
+    "effectiveness": 0.65,
+    "cost": 68,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 0
+    }
+  },
+  "honeyCompress": {
+    "attack_action": ["compress"],
+    "effectiveness": 0.78,
+    "cost": 78,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 1,
+      "discovery": 1
+    }
+  },
+  "redirectToDecoy": {
+    "attack_action": ["HTTP"],
+    "effectiveness": 0.9,
+    "cost": 82,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 1
+    }
+  },
+  "honeyTraffic": {
+    "attack_action": ["HTTP"],
+    "effectiveness": 0.7,
+    "cost": 80,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 1,
+      "discovery": 1
+    }
+  },
+  "corrouptTraffic": {
+    "attack_action": ["HTTP"],
+    "effectiveness": 0.6,
+    "cost": 77,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 1,
+      "discovery": 1
+    }
+  },
+  "blockTraffic": {
+    "attack_action": ["HTTP"],
+    "effectiveness": 0.82,
+    "cost": 80,
+    "benefit": {
+      "diversion": 1,
+      "distortion": 0,
+      "depletion": 0,
+      "discovery": 1
+    }
+  }
+}
+
+
+
+

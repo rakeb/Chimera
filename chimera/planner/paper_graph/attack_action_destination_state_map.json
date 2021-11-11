@@ -1,0 +1,29 @@
+{
+  "execute": {
+    "next_state": "User_Execution_Malicious_File"
+  },
+  "setFileAttribute": {
+    "next_state": "Hide_Artifacts_Hidden_Files_and_Directories"
+  },
+  "addToRegistryRunKeys": {
+    "next_state": "Registry_Run_Keys_Startup_Folder"
+  },
+  "tasklist": {
+    "next_state": "Software_Discovery"
+  },
+  "queryRegistry": {
+    "next_state": "Credentials_in_Registry"
+  },
+  "listDir": {
+    "next_state": "File_and_Directory_Discovery"
+  },
+  "copy": {
+    "next_state": "Data_Staged"
+  },
+  "compress": {
+    "next_state": "Data_Staged"
+  },
+  "HTTP": {
+    "next_state": "Exfiltration_Over_C2"
+  }
+}

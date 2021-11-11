@@ -1,0 +1,44 @@
+File and Directory Discovery
+Honey data compressed
+Replace_with_honey_file
+90
+File and Directory Discovery
+Data compressed
+Replace_with_honey_file
+10
+File and Directory Discovery
+Honey data compressed
+Return_false_api_status
+85
+File and Directory Discovery
+Data compressed
+Return_false_api_status
+15
+Data compressed
+Traffic poisoned
+Encrypt_traffic
+95
+Data compressed
+Exfiltration over C2
+Encrypt_traffic
+5
+Data compressed
+Traffic poisoned
+Redirect_traffic
+90
+Data compressed
+Exfiltration over C2
+Redirect_traffic
+10
+Traffic poisoned
+Lateral Movement
+Lateral Movement
+70
+Traffic poisoned
+Lateral Movement
+Lateral Movement
+30
+Honey data compressed
+Deceived Exfiltration
+*
+100

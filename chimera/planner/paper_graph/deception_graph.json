@@ -1,0 +1,368 @@
+{
+  "Phishing_Spearphishing_Attachment": {
+    "doNothing,execute": {
+      "next_state": "User_Execution_Malicious_File"
+    },
+    "migrateInHE,execute": {
+      "next_state": "User_Execution_in_HE"
+    }
+  },
+  "User_Execution_Malicious_File": {
+    "doNothing, setFileAttribute": {
+      "next_state": "Hide_Artifacts_Hidden_Files_and_Directories"
+    },
+    "doNothing, addToRegistryRunKeys": {
+      "next_state": "Registry_Run_Keys_Startup_Folder"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "User_Execution_in_HE": {
+    "doNothing, setFileAttribute": {
+      "next_state": "Hide_Artifacts_Hidden_Files_and_Directories"
+    },
+    "doNothing, addToRegistryRunKeys": {
+      "next_state": "Registry_Run_Keys_Startup_Folder"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "Hide_Artifacts_Hidden_Files_and_Directories": {
+    "doNothing, addToRegistryRunKeys": {
+      "next_state": "Registry_Run_Keys_Startup_Folder"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "Registry_Run_Keys_Startup_Folder": {
+    "doNothing, setFileAttribute": {
+      "next_state": "Hide_Artifacts_Hidden_Files_and_Directories"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "Software_Discovery": {
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, copy": {
+      "next_state": "Data_Staged"
+    },
+    "honeyCopy, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "deleteData, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "Credentials_in_Registry": {
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, copy": {
+      "next_state": "Data_Staged"
+    },
+    "honeyCopy, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "deleteData, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "File_and_Directory_Discovery": {
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, copy": {
+      "next_state": "Data_Staged"
+    },
+    "honeyCopy, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "deleteData, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    }
+  },
+  "Honey_Software_Discovery": {
+    "honeySwList, tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "honeyCopy, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "deleteData, copy": {
+      "next_state": "Honey_Data_Staged"
+    }
+  },
+  "Honey_Credentials_in_Registry": {
+    "honeySwList, tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "honeyCopy, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "deleteData, copy": {
+      "next_state": "Honey_Data_Staged"
+    }
+  },
+  "Honey_File_and_Directory_Discovery": {
+    "honeySwList, tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    },
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "doNothing, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+        "honeyCopy, copy": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "deleteData, copy": {
+      "next_state": "Honey_Data_Staged"
+    }
+  },
+  "Data_Staged": {
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    },
+    "doNothing, compress": {
+      "next_state": "Data_Staged"
+    },
+    "doNothing, HTTP": {
+      "next_state": "Exfiltration_Over_C2"
+    },
+    "honeyCompress, compress": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "redirectToDecoy, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "honeyTraffic, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "corrouptTraffic, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "blockTraffic, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    }
+  },
+  "Honey_Data_Staged": {
+    "doNothing, listDir": {
+      "next_state": "File_and_Directory_Discovery"
+    },
+    "doNothing, tasklist": {
+      "next_state": "Software_Discovery"
+    },
+    "doNothing, queryRegistry": {
+      "next_state": "Credentials_in_Registry"
+    },
+    "honeySwList,tasklist": {
+      "next_state": "Honey_Software_Discovery"
+    },
+    "honeyRegistry,queryRegistry": {
+      "next_state": "Honey_Credentials_in_Registry"
+    },
+    "redirectToHoneyDir,listDir": {
+      "next_state": "Honey_File_and_Directory_Discovery"
+    },
+    "honeyCompress, compress": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "doNothing, compress": {
+      "next_state": "Honey_Data_Staged"
+    },
+    "doNothing, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "redirectToDecoy, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "honeyTraffic, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "corrouptTraffic, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    },
+    "blockTraffic, HTTP": {
+      "next_state": "Deceived_Exfiltration"
+    }
+  }
+}
+
+
+
+

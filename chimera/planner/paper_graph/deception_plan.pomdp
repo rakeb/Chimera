@@ -1,0 +1,409 @@
+discount: 0.5
+values: reward
+states: Phishing_Spearphishing_Attachment User_Execution_Malicious_File User_Execution_in_HE Hide_Artifacts_Hidden_Files_and_Directories Registry_Run_Keys_Startup_Folder Software_Discovery Credentials_in_Registry File_and_Directory_Discovery Honey_Software_Discovery Honey_Credentials_in_Registry Honey_File_and_Directory_Discovery Data_Staged Honey_Data_Staged Exfiltration_Over_C2 Deceived_Exfiltration 
+actions: migrateInHE doNothing honeySwList honeyRegistry redirectToHoneyDir honeyCopy deleteData honeyCompress redirectToDecoy honeyTraffic corrouptTraffic blockTraffic 
+observations: Phishing_Spearphishing_Attachment User_Execution_Malicious_File User_Execution_in_HE Hide_Artifacts_Hidden_Files_and_Directories Registry_Run_Keys_Startup_Folder Software_Discovery Credentials_in_Registry File_and_Directory_Discovery Honey_Software_Discovery Honey_Credentials_in_Registry Honey_File_and_Directory_Discovery Data_Staged Honey_Data_Staged Exfiltration_Over_C2 Deceived_Exfiltration 
+
+start: uniform
+
+T:migrateInHE
+0.0 0.050000000000000044 0.95 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:doNothing
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:honeySwList
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.011999999999999997 0.06 0.06 0.048 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.011999999999999997 0.0 0.0 0.048 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.029999999999999992 0.25 0.5 0.12 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.029999999999999992 0.25 0.5 0.12 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.009999999999999998 0.1 0.2 0.04000000000000001 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.019999999999999997 0.05 0.2 0.08000000000000002 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.019999999999999997 0.2 0.05 0.08000000000000002 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.009999999999999998 0.0 0.0 0.04000000000000001 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.019999999999999997 0.0 0.0 0.08000000000000002 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.019999999999999997 0.0 0.0 0.08000000000000002 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.011999999999999997 0.06 0.06 0.048 0.0 0.0 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.011999999999999997 0.0 0.0 0.048 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:honeyRegistry
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.015 0.06 0.0 0.045 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.015 0.0 0.06 0.045 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.0625 0.5 0.0 0.1875 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.0625 0.5 0.0 0.1875 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.025 0.2 0.0 0.07500000000000001 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.0125 0.2 0.0 0.037500000000000006 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.05 0.0 0.15000000000000002 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.025 0.0 0.05 0.07500000000000001 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0125 0.0 0.1 0.037500000000000006 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.0 0.1 0.15000000000000002 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.015 0.06 0.0 0.045 0.0 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.015 0.0 0.06 0.045 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:redirectToHoneyDir
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.009000000000000001 0.0 0.0 0.051 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.009000000000000001 0.06 0.06 0.051 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.07500000000000001 0.0 0.0 0.425 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.07500000000000001 0.0 0.0 0.425 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.030000000000000006 0.0 0.0 0.17 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.030000000000000006 0.0 0.0 0.17 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.0075000000000000015 0.0 0.0 0.0425 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.030000000000000006 0.05 0.1 0.17 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.030000000000000006 0.1 0.05 0.17 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0075000000000000015 0.1 0.2 0.0425 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.009000000000000001 0.0 0.0 0.051 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.009000000000000001 0.06 0.06 0.051 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:honeyCopy
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.1625 0.48750000000000004 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.1625 0.48750000000000004 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.1625 0.48750000000000004 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:deleteData
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.22749999999999998 0.42250000000000004 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.22749999999999998 0.42250000000000004 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.22749999999999998 0.42250000000000004 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:honeyCompress
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.10999999999999999 0.39 0.32 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:redirectToDecoy
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.031999999999999994 0.28800000000000003 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:honeyTraffic
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.09600000000000002 0.22399999999999998 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:corrouptTraffic
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.128 0.192 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+T:blockTraffic
+0.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.06 0.06 0.06 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.41 0.41 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.1 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.1 0.0 0.15 0.25 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.0 0.0 0.65 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.05 0.1 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.05 0.2 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.2 0.05 0.0 0.65 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.0 0.0 0.5 0.0 0.05760000000000002 0.26239999999999997 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.06 0.06 0.06 0.0 0.5 0.0 0.32 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 
+
+O:*
+0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 0.014286 
+0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.014286 0.80 
+
+R:migrateInHE     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:migrateInHE     : *    : User_Execution_Malicious_File : *  -8.000000
+R:migrateInHE     : *    : User_Execution_in_HE : *  6.000000
+R:migrateInHE     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:migrateInHE     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:migrateInHE     : *    : Software_Discovery : *  -8.000000
+R:migrateInHE     : *    : Credentials_in_Registry : *  -8.000000
+R:migrateInHE     : *    : File_and_Directory_Discovery : *  -8.000000
+R:migrateInHE     : *    : Honey_Software_Discovery : *  5.000000
+R:migrateInHE     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:migrateInHE     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:migrateInHE     : *    : Data_Staged : *  -8.000000
+R:migrateInHE     : *    : Honey_Data_Staged : *  4.000000
+R:migrateInHE     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:migrateInHE     : *    : Deceived_Exfiltration : *  3.000000
+R:doNothing     : *    : Phishing_Spearphishing_Attachment : *  -10.000000
+R:doNothing     : *    : User_Execution_Malicious_File : *  -10.000000
+R:doNothing     : *    : User_Execution_in_HE : *  4.000000
+R:doNothing     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -10.000000
+R:doNothing     : *    : Registry_Run_Keys_Startup_Folder : *  -10.000000
+R:doNothing     : *    : Software_Discovery : *  -10.000000
+R:doNothing     : *    : Credentials_in_Registry : *  -10.000000
+R:doNothing     : *    : File_and_Directory_Discovery : *  -10.000000
+R:doNothing     : *    : Honey_Software_Discovery : *  3.000000
+R:doNothing     : *    : Honey_Credentials_in_Registry : *  3.000000
+R:doNothing     : *    : Honey_File_and_Directory_Discovery : *  3.000000
+R:doNothing     : *    : Data_Staged : *  -10.000000
+R:doNothing     : *    : Honey_Data_Staged : *  2.000000
+R:doNothing     : *    : Exfiltration_Over_C2 : *  -110.000000
+R:doNothing     : *    : Deceived_Exfiltration : *  1.000000
+R:honeySwList     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:honeySwList     : *    : User_Execution_Malicious_File : *  -8.000000
+R:honeySwList     : *    : User_Execution_in_HE : *  6.000000
+R:honeySwList     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:honeySwList     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:honeySwList     : *    : Software_Discovery : *  -8.000000
+R:honeySwList     : *    : Credentials_in_Registry : *  -8.000000
+R:honeySwList     : *    : File_and_Directory_Discovery : *  -8.000000
+R:honeySwList     : *    : Honey_Software_Discovery : *  5.000000
+R:honeySwList     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:honeySwList     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:honeySwList     : *    : Data_Staged : *  -8.000000
+R:honeySwList     : *    : Honey_Data_Staged : *  4.000000
+R:honeySwList     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:honeySwList     : *    : Deceived_Exfiltration : *  3.000000
+R:honeyRegistry     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:honeyRegistry     : *    : User_Execution_Malicious_File : *  -8.000000
+R:honeyRegistry     : *    : User_Execution_in_HE : *  6.000000
+R:honeyRegistry     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:honeyRegistry     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:honeyRegistry     : *    : Software_Discovery : *  -8.000000
+R:honeyRegistry     : *    : Credentials_in_Registry : *  -8.000000
+R:honeyRegistry     : *    : File_and_Directory_Discovery : *  -8.000000
+R:honeyRegistry     : *    : Honey_Software_Discovery : *  5.000000
+R:honeyRegistry     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:honeyRegistry     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:honeyRegistry     : *    : Data_Staged : *  -8.000000
+R:honeyRegistry     : *    : Honey_Data_Staged : *  4.000000
+R:honeyRegistry     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:honeyRegistry     : *    : Deceived_Exfiltration : *  3.000000
+R:redirectToHoneyDir     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:redirectToHoneyDir     : *    : User_Execution_Malicious_File : *  -8.000000
+R:redirectToHoneyDir     : *    : User_Execution_in_HE : *  6.000000
+R:redirectToHoneyDir     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:redirectToHoneyDir     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:redirectToHoneyDir     : *    : Software_Discovery : *  -8.000000
+R:redirectToHoneyDir     : *    : Credentials_in_Registry : *  -8.000000
+R:redirectToHoneyDir     : *    : File_and_Directory_Discovery : *  -8.000000
+R:redirectToHoneyDir     : *    : Honey_Software_Discovery : *  5.000000
+R:redirectToHoneyDir     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:redirectToHoneyDir     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:redirectToHoneyDir     : *    : Data_Staged : *  -8.000000
+R:redirectToHoneyDir     : *    : Honey_Data_Staged : *  4.000000
+R:redirectToHoneyDir     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:redirectToHoneyDir     : *    : Deceived_Exfiltration : *  3.000000
+R:honeyCopy     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:honeyCopy     : *    : User_Execution_Malicious_File : *  -8.000000
+R:honeyCopy     : *    : User_Execution_in_HE : *  6.000000
+R:honeyCopy     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:honeyCopy     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:honeyCopy     : *    : Software_Discovery : *  -8.000000
+R:honeyCopy     : *    : Credentials_in_Registry : *  -8.000000
+R:honeyCopy     : *    : File_and_Directory_Discovery : *  -8.000000
+R:honeyCopy     : *    : Honey_Software_Discovery : *  5.000000
+R:honeyCopy     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:honeyCopy     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:honeyCopy     : *    : Data_Staged : *  -8.000000
+R:honeyCopy     : *    : Honey_Data_Staged : *  4.000000
+R:honeyCopy     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:honeyCopy     : *    : Deceived_Exfiltration : *  3.000000
+R:deleteData     : *    : Phishing_Spearphishing_Attachment : *  -9.000000
+R:deleteData     : *    : User_Execution_Malicious_File : *  -9.000000
+R:deleteData     : *    : User_Execution_in_HE : *  5.000000
+R:deleteData     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -9.000000
+R:deleteData     : *    : Registry_Run_Keys_Startup_Folder : *  -9.000000
+R:deleteData     : *    : Software_Discovery : *  -9.000000
+R:deleteData     : *    : Credentials_in_Registry : *  -9.000000
+R:deleteData     : *    : File_and_Directory_Discovery : *  -9.000000
+R:deleteData     : *    : Honey_Software_Discovery : *  4.000000
+R:deleteData     : *    : Honey_Credentials_in_Registry : *  4.000000
+R:deleteData     : *    : Honey_File_and_Directory_Discovery : *  4.000000
+R:deleteData     : *    : Data_Staged : *  -9.000000
+R:deleteData     : *    : Honey_Data_Staged : *  3.000000
+R:deleteData     : *    : Exfiltration_Over_C2 : *  -109.000000
+R:deleteData     : *    : Deceived_Exfiltration : *  2.000000
+R:honeyCompress     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:honeyCompress     : *    : User_Execution_Malicious_File : *  -8.000000
+R:honeyCompress     : *    : User_Execution_in_HE : *  6.000000
+R:honeyCompress     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:honeyCompress     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:honeyCompress     : *    : Software_Discovery : *  -8.000000
+R:honeyCompress     : *    : Credentials_in_Registry : *  -8.000000
+R:honeyCompress     : *    : File_and_Directory_Discovery : *  -8.000000
+R:honeyCompress     : *    : Honey_Software_Discovery : *  5.000000
+R:honeyCompress     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:honeyCompress     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:honeyCompress     : *    : Data_Staged : *  -8.000000
+R:honeyCompress     : *    : Honey_Data_Staged : *  4.000000
+R:honeyCompress     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:honeyCompress     : *    : Deceived_Exfiltration : *  3.000000
+R:redirectToDecoy     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:redirectToDecoy     : *    : User_Execution_Malicious_File : *  -8.000000
+R:redirectToDecoy     : *    : User_Execution_in_HE : *  6.000000
+R:redirectToDecoy     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:redirectToDecoy     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:redirectToDecoy     : *    : Software_Discovery : *  -8.000000
+R:redirectToDecoy     : *    : Credentials_in_Registry : *  -8.000000
+R:redirectToDecoy     : *    : File_and_Directory_Discovery : *  -8.000000
+R:redirectToDecoy     : *    : Honey_Software_Discovery : *  5.000000
+R:redirectToDecoy     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:redirectToDecoy     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:redirectToDecoy     : *    : Data_Staged : *  -8.000000
+R:redirectToDecoy     : *    : Honey_Data_Staged : *  4.000000
+R:redirectToDecoy     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:redirectToDecoy     : *    : Deceived_Exfiltration : *  3.000000
+R:honeyTraffic     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:honeyTraffic     : *    : User_Execution_Malicious_File : *  -8.000000
+R:honeyTraffic     : *    : User_Execution_in_HE : *  6.000000
+R:honeyTraffic     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:honeyTraffic     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:honeyTraffic     : *    : Software_Discovery : *  -8.000000
+R:honeyTraffic     : *    : Credentials_in_Registry : *  -8.000000
+R:honeyTraffic     : *    : File_and_Directory_Discovery : *  -8.000000
+R:honeyTraffic     : *    : Honey_Software_Discovery : *  5.000000
+R:honeyTraffic     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:honeyTraffic     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:honeyTraffic     : *    : Data_Staged : *  -8.000000
+R:honeyTraffic     : *    : Honey_Data_Staged : *  4.000000
+R:honeyTraffic     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:honeyTraffic     : *    : Deceived_Exfiltration : *  3.000000
+R:corrouptTraffic     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:corrouptTraffic     : *    : User_Execution_Malicious_File : *  -8.000000
+R:corrouptTraffic     : *    : User_Execution_in_HE : *  6.000000
+R:corrouptTraffic     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:corrouptTraffic     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:corrouptTraffic     : *    : Software_Discovery : *  -8.000000
+R:corrouptTraffic     : *    : Credentials_in_Registry : *  -8.000000
+R:corrouptTraffic     : *    : File_and_Directory_Discovery : *  -8.000000
+R:corrouptTraffic     : *    : Honey_Software_Discovery : *  5.000000
+R:corrouptTraffic     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:corrouptTraffic     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:corrouptTraffic     : *    : Data_Staged : *  -8.000000
+R:corrouptTraffic     : *    : Honey_Data_Staged : *  4.000000
+R:corrouptTraffic     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:corrouptTraffic     : *    : Deceived_Exfiltration : *  3.000000
+R:blockTraffic     : *    : Phishing_Spearphishing_Attachment : *  -8.000000
+R:blockTraffic     : *    : User_Execution_Malicious_File : *  -8.000000
+R:blockTraffic     : *    : User_Execution_in_HE : *  6.000000
+R:blockTraffic     : *    : Hide_Artifacts_Hidden_Files_and_Directories : *  -8.000000
+R:blockTraffic     : *    : Registry_Run_Keys_Startup_Folder : *  -8.000000
+R:blockTraffic     : *    : Software_Discovery : *  -8.000000
+R:blockTraffic     : *    : Credentials_in_Registry : *  -8.000000
+R:blockTraffic     : *    : File_and_Directory_Discovery : *  -8.000000
+R:blockTraffic     : *    : Honey_Software_Discovery : *  5.000000
+R:blockTraffic     : *    : Honey_Credentials_in_Registry : *  5.000000
+R:blockTraffic     : *    : Honey_File_and_Directory_Discovery : *  5.000000
+R:blockTraffic     : *    : Data_Staged : *  -8.000000
+R:blockTraffic     : *    : Honey_Data_Staged : *  4.000000
+R:blockTraffic     : *    : Exfiltration_Over_C2 : *  -108.000000
+R:blockTraffic     : *    : Deceived_Exfiltration : *  3.000000

@@ -1,0 +1,9 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 2px;
+    list-style: none;
+}
+
+.spinner-hide{
+    display: none;
+}

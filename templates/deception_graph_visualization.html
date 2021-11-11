@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 2000px;
+            height: 1500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Phishing_Spearphishing_Attachment", "label": "Phishing_Spearphishing_Attachment", "shape": "dot", "size": 10}, {"id": "User_Execution_Malicious_File", "label": "User_Execution_Malicious_File", "shape": "dot", "size": 10}, {"id": "User_Execution_in_HE", "label": "User_Execution_in_HE", "shape": "dot", "size": 10}, {"id": "Hide_Artifacts_Hidden_Files_and_Directories", "label": "Hide_Artifacts_Hidden_Files_and_Directories", "shape": "dot", "size": 10}, {"id": "Registry_Run_Keys_Startup_Folder", "label": "Registry_Run_Keys_Startup_Folder", "shape": "dot", "size": 10}, {"id": "Software_Discovery", "label": "Software_Discovery", "shape": "dot", "size": 10}, {"id": "Credentials_in_Registry", "label": "Credentials_in_Registry", "shape": "dot", "size": 10}, {"id": "File_and_Directory_Discovery", "label": "File_and_Directory_Discovery", "shape": "dot", "size": 10}, {"id": "Honey_Software_Discovery", "label": "Honey_Software_Discovery", "shape": "dot", "size": 10}, {"id": "Honey_Credentials_in_Registry", "label": "Honey_Credentials_in_Registry", "shape": "dot", "size": 10}, {"id": "Honey_File_and_Directory_Discovery", "label": "Honey_File_and_Directory_Discovery", "shape": "dot", "size": 10}, {"id": "Data_Staged", "label": "Data_Staged", "shape": "dot", "size": 10}, {"id": "Honey_Data_Staged", "label": "Honey_Data_Staged", "shape": "dot", "size": 10}, {"id": "Exfiltration_Over_C2", "label": "Exfiltration_Over_C2", "shape": "dot", "size": 10}, {"id": "Deceived_Exfiltration", "label": "Deceived_Exfiltration", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"app": 1.0, "arrows": "to", "attack_action": "execute", "deception_action": "doNothing", "from": "Phishing_Spearphishing_Attachment", "to": "User_Execution_Malicious_File", "weight": 1}, {"app": 1.0, "arrows": "to", "attack_action": "execute", "deception_action": "migrateInHE", "from": "Phishing_Spearphishing_Attachment", "to": "User_Execution_in_HE", "weight": 1}, {"app": 0.41, "arrows": "to", "attack_action": "setFileAttribute", "deception_action": "doNothing", "from": "User_Execution_Malicious_File", "to": "Hide_Artifacts_Hidden_Files_and_Directories", "weight": 1}, {"app": 0.41, "arrows": "to", "attack_action": "addToRegistryRunKeys", "deception_action": "doNothing", "from": "User_Execution_Malicious_File", "to": "Registry_Run_Keys_Startup_Folder", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "User_Execution_Malicious_File", "to": "Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "User_Execution_Malicious_File", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "User_Execution_Malicious_File", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "User_Execution_Malicious_File", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "User_Execution_Malicious_File", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "User_Execution_Malicious_File", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.41, "arrows": "to", "attack_action": "setFileAttribute", "deception_action": "doNothing", "from": "User_Execution_in_HE", "to": "Hide_Artifacts_Hidden_Files_and_Directories", "weight": 1}, {"app": 0.41, "arrows": "to", "attack_action": "addToRegistryRunKeys", "deception_action": "doNothing", "from": "User_Execution_in_HE", "to": "Registry_Run_Keys_Startup_Folder", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "User_Execution_in_HE", "to": "Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "User_Execution_in_HE", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "User_Execution_in_HE", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "User_Execution_in_HE", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "User_Execution_in_HE", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "User_Execution_in_HE", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "addToRegistryRunKeys", "deception_action": "doNothing", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "Registry_Run_Keys_Startup_Folder", "weight": 1}, {"app": 0.15, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "Software_Discovery", "weight": 1}, {"app": 0.25, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.15, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.25, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Hide_Artifacts_Hidden_Files_and_Directories", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "setFileAttribute", "deception_action": "doNothing", "from": "Registry_Run_Keys_Startup_Folder", "to": "Hide_Artifacts_Hidden_Files_and_Directories", "weight": 1}, {"app": 0.15, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Registry_Run_Keys_Startup_Folder", "to": "Software_Discovery", "weight": 1}, {"app": 0.25, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Registry_Run_Keys_Startup_Folder", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Registry_Run_Keys_Startup_Folder", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.15, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Registry_Run_Keys_Startup_Folder", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.25, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Registry_Run_Keys_Startup_Folder", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Registry_Run_Keys_Startup_Folder", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Software_Discovery", "to": "Software_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Software_Discovery", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Software_Discovery", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "doNothing", "from": "Software_Discovery", "to": "Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "honeyCopy", "from": "Software_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "deleteData", "from": "Software_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Software_Discovery", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Software_Discovery", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Software_Discovery", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Credentials_in_Registry", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Credentials_in_Registry", "to": "Software_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Credentials_in_Registry", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "doNothing", "from": "Credentials_in_Registry", "to": "Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "honeyCopy", "from": "Credentials_in_Registry", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "deleteData", "from": "Credentials_in_Registry", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Credentials_in_Registry", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Credentials_in_Registry", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Credentials_in_Registry", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "File_and_Directory_Discovery", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "File_and_Directory_Discovery", "to": "Software_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "File_and_Directory_Discovery", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "doNothing", "from": "File_and_Directory_Discovery", "to": "Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "honeyCopy", "from": "File_and_Directory_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "deleteData", "from": "File_and_Directory_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "File_and_Directory_Discovery", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "File_and_Directory_Discovery", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "File_and_Directory_Discovery", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Honey_Software_Discovery", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Honey_Software_Discovery", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Honey_Software_Discovery", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Honey_Software_Discovery", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Honey_Software_Discovery", "to": "Software_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Honey_Software_Discovery", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "doNothing", "from": "Honey_Software_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "honeyCopy", "from": "Honey_Software_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "deleteData", "from": "Honey_Software_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Honey_Credentials_in_Registry", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Honey_Credentials_in_Registry", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Honey_Credentials_in_Registry", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Honey_Credentials_in_Registry", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Honey_Credentials_in_Registry", "to": "Software_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Honey_Credentials_in_Registry", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "doNothing", "from": "Honey_Credentials_in_Registry", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "honeyCopy", "from": "Honey_Credentials_in_Registry", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "deleteData", "from": "Honey_Credentials_in_Registry", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Honey_File_and_Directory_Discovery", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Honey_File_and_Directory_Discovery", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Honey_File_and_Directory_Discovery", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.05, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Honey_File_and_Directory_Discovery", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.1, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Honey_File_and_Directory_Discovery", "to": "Software_Discovery", "weight": 1}, {"app": 0.2, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Honey_File_and_Directory_Discovery", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "doNothing", "from": "Honey_File_and_Directory_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "honeyCopy", "from": "Honey_File_and_Directory_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.65, "arrows": "to", "attack_action": "copy", "deception_action": "deleteData", "from": "Honey_File_and_Directory_Discovery", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Data_Staged", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Data_Staged", "to": "Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Data_Staged", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Data_Staged", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Data_Staged", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Data_Staged", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "compress", "deception_action": "doNothing", "from": "Data_Staged", "to": "Data_Staged", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "doNothing", "from": "Data_Staged", "to": "Exfiltration_Over_C2", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "compress", "deception_action": "honeyCompress", "from": "Data_Staged", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "redirectToDecoy", "from": "Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "honeyTraffic", "from": "Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "corrouptTraffic", "from": "Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "blockTraffic", "from": "Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "doNothing", "from": "Honey_Data_Staged", "to": "File_and_Directory_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "doNothing", "from": "Honey_Data_Staged", "to": "Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "doNothing", "from": "Honey_Data_Staged", "to": "Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "tasklist", "deception_action": "honeySwList", "from": "Honey_Data_Staged", "to": "Honey_Software_Discovery", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "queryRegistry", "deception_action": "honeyRegistry", "from": "Honey_Data_Staged", "to": "Honey_Credentials_in_Registry", "weight": 1}, {"app": 0.06, "arrows": "to", "attack_action": "listDir", "deception_action": "redirectToHoneyDir", "from": "Honey_Data_Staged", "to": "Honey_File_and_Directory_Discovery", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "compress", "deception_action": "honeyCompress", "from": "Honey_Data_Staged", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.5, "arrows": "to", "attack_action": "compress", "deception_action": "doNothing", "from": "Honey_Data_Staged", "to": "Honey_Data_Staged", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "doNothing", "from": "Honey_Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "redirectToDecoy", "from": "Honey_Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "honeyTraffic", "from": "Honey_Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "corrouptTraffic", "from": "Honey_Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}, {"app": 0.32, "arrows": "to", "attack_action": "HTTP", "deception_action": "blockTraffic", "from": "Honey_Data_Staged", "to": "Deceived_Exfiltration", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

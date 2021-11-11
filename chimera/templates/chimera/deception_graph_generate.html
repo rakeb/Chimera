@@ -1,0 +1,176 @@
+{% extends "chimera/base_generic.html" %}
+
+{% block title %}
+    <title>Deception Graph Generation</title>
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <div class="jumbotron justify-content-center text-center">
+        <h1 class="mb-3">Information Stealer Deception Graph</h1>
+        <figure class="figure">
+            <img src="{% static 'images/info_stealer_deception_graph.png' %}" class="img-fluid" alt="Responsive image"
+                 width="80%">
+        </figure>
+        <h1 class="mb-3">Update Edge Properties</h1>
+        {#        <div class="container justify-content-center text-center">#}
+        <table id="myTable" class=" table order-list">
+            <thead>
+            <tr>
+                <td class="col-auto"><em><b>Start State</b></em></td>
+                <td class="col-auto"><em><b>End State</b></em></td>
+                <td class="col-auto"><em><b>Deception Action</b></em></td>
+                <td class="col-auto"><em><b>Attack Action</b></em></td>
+                <td class="col-auto"><em><b>Attack Propagation Probability</b></em></td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in edge_list %}
+                <tr>
+                    <td class="col-auto">
+                        <input type="text" name="start_state" class="form-control" value="{{ row.start_state }}"/>
+                    </td>
+                    <td class="col-auto">
+                        <input type="text" name="end_state" class="form-control" value="{{ row.end_state }}"/>
+                    </td>
+                    <td class="col-auto">
+                        <input type="text" name="deception_action" class="form-control"
+                               value="{{ row.deception_action }}"/>
+                    </td>
+                    <td class="col-auto">
+                        <input type="text" name="attack_action" class="form-control"
+                               value="{{ row.attack_action }}"/>
+                    </td>
+                    <td class="col-auto">
+                        <input type="text" name="app" class="form-control" value="{{ row.app }}"/>
+                    </td>
+                    <td>
+                        <input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete">
+                    </td>
+                    <td class="col-auto"><a class="deleteRow"></a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="col-auto" colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-primary btn-block " id="addrow" value="Add New Edge"/>
+                </td>
+            </tr>
+            <tr>
+            </tr>
+            </tfoot>
+        </table>
+        {#        </div>#}
+
+        <input type="button" class="btn btn-primary btn-lg active" id="button_generate_and_visualize_deception_graph"
+               value="Generate Deception Graph"/>
+        {#            <a href="/generate-deception-graph/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Generate Deception Graph</a>#}
+
+        <a href="/visualize-deception-graph/" target="_blank" class="btn btn-primary btn-lg active" role="button"
+           aria-pressed="true">Visualize Deception Graph</a>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var counter = 0;
+
+            $("#addrow").on("click", function () {
+                var newRow = $("<tr>");
+                var cols = "";
+
+                cols += '<td><input type="text" class="form-control" name="start_state' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" name="end_state' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" name="deception_action' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" name="attack_action' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" name="app' + counter + '"/></td>';
+
+                cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+                newRow.append(cols);
+                $("table.order-list").append(newRow);
+                counter++;
+            });
+
+
+            $("table.order-list").on("click", ".ibtnDel", function (event) {
+                $(this).closest("tr").remove();
+                counter -= 1
+            });
+
+
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                }
+            });
+
+            function ajaxTADistribution(request, url) {
+                var data_received
+                request['csrfmiddlewaretoken'] = '{{ csrf_token }}';
+                var sc_row = JSON.stringify(request);
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: sc_row,
+                    "beforeSend": function (xhr, settings) {
+                        $.ajaxSettings.beforeSend(xhr, settings);
+                    },
+
+                    success: function (data_received) {
+                        alert(data_received['message'])
+                        {#output(data_received)#}
+                        return data_received
+                    },
+                    error: function () {
+                        alert(data_received['message'])
+                        return data_received
+                    }
+                });
+            }
+
+            function output(data_received) {
+                location.replace(data_received['message'])
+            }
+
+            function prepareRequest() {
+                let request_body = {};
+                request_body['current_observed_state'] = $('#form_id_reco_action :selected').text()
+                return request_body;
+            }
+
+            $('#button_generate_and_visualize_deception_graph').click(function () {
+                let request = prepareRequest();
+                console.log("request : ");
+                console.log(request);
+
+                let received_data = ajaxTADistribution({}, "/generate-deception-graph/");
+            });
+        });
+    </script>
+
+{% endblock %}
