@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-sm">
                     <ul class="list-group">
-                        <li class="list-group-item"><em><b>Real States</b></em></li>
+                        <li class="list-group-item"><em><b>Real States/Attack States</b></em></li>
                         {% for row in real_state %}
                             <li class="list-group-item">{{ row }}</li>
                         {% endfor %}
@@ -85,7 +85,56 @@
                 </div>
             </div>
 
+            <label for="attack_action_prediction_block"><h2 class="mb-3">Attack Graph using TTP ATT&CK</h2></label><br>
+            <p class="lead">The following are the likelihood of attack actions being executed from a given (current)
+                state.</p>
+
+            <table id="id_attack_action_prediction_table" class=" table attack_action_prediction_table_order_list">
+                <thead>
+                <tr>
+                    <td class="col-auto"><em><b>Current State</b></em></td>
+                    <td class="col-auto"><em><b>Attack Action Name</b></em></td>
+                    <td class="col-auto"><em><b>Action Execution Probability</b></em></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for current_state, action_pred_attrb in attack_action_prediction.items %}
+                    {% for key, val in action_pred_attrb.items %}
+                        <tr id="attack_action_prediction_row">
+                            <td class="col-auto">
+                                <input type="text" id="current_state" class="form-control"
+                                       value="{{ current_state }}"/>
+                            </td>
+                            <td class="col-auto">
+                                <input type="text" id="attack_action" class="form-control" value="{{ key }}"/>
+                            </td>
+                            <td class="col-auto">
+                                <input type="text" id="probability" class="form-control" value="{{ val.probability }}"/>
+                            </td>
+                            <td>
+                                <input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete">
+                            </td>
+                            <td class="col-auto"><a class="deleteRow"></a></td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td class="col-auto justify-content-center text-center"  style="text-align: center;">
+                        <input type="button" class="btn btn-primary btn-block "
+                               id="id_attack_action_prediction_table_addrow"
+                               value="Add New Attack Action"/>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                </tfoot>
+            </table>
+
+
             <label for="deception_action_block"><h2 class="mb-3">Deception Actions</h2></label>
+
             <p class="lead">The following are deception actions. Each deception actions has corresponding compatible
                 attack action against which the deception action is effective. The other parameters are
                 <em>effectiveness</em>
@@ -135,55 +184,52 @@
                 </tr>
                 </tfoot>
             </table>
-            <label for="attack_action_prediction_block"><h2 class="mb-3">Attack Action Likelihood</h2></label><br>
-            <p class="lead">The following are the likelihood of attack actions being executed from a given (current)
-                state.</p>
-
-            <table id="id_attack_action_prediction_table" class=" table attack_action_prediction_table_order_list">
-                <thead>
-                <tr>
-                    <td class="col-auto"><em><b>Current State</b></em></td>
-                    <td class="col-auto"><em><b>Attack Action Name</b></em></td>
-                    <td class="col-auto"><em><b>Action Execution Probability</b></em></td>
-                </tr>
-                </thead>
-                <tbody>
-                {% for current_state, action_pred_attrb in attack_action_prediction.items %}
-                    {% for key, val in action_pred_attrb.items %}
-                        <tr id="attack_action_prediction_row">
-                            <td class="col-auto">
-                                <input type="text" id="current_state" class="form-control"
-                                       value="{{ current_state }}"/>
-                            </td>
-                            <td class="col-auto">
-                                <input type="text" id="attack_action" class="form-control" value="{{ key }}"/>
-                            </td>
-                            <td class="col-auto">
-                                <input type="text" id="probability" class="form-control" value="{{ val.probability }}"/>
-                            </td>
-                            <td>
-                                <input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete">
-                            </td>
-                            <td class="col-auto"><a class="deleteRow"></a></td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td class="col-auto justify-content-center text-center"  style="text-align: center;">
-                        <input type="button" class="btn btn-primary btn-block "
-                               id="id_attack_action_prediction_table_addrow"
-                               value="Add New Attack Action"/>
-                    </td>
-                </tr>
-                <tr>
-                </tr>
-                </tfoot>
-            </table>
-{#            <input type="button" class="btn btn-primary btn-lg active"#}
-{#                   id="button_generate_and_visualize_deception_graph"#}
-{#                   value="Generate Deception Graph"/>#}
+{#            <label for="attack_action_prediction_block"><h2 class="mb-3">Attack Graph using TTP ATT&CK</h2></label><br>#}
+{#            <p class="lead">The following are the likelihood of attack actions being executed from a given (current)#}
+{#                state.</p>#}
+{##}
+{#            <table id="id_attack_action_prediction_table" class=" table attack_action_prediction_table_order_list">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <td class="col-auto"><em><b>Current State</b></em></td>#}
+{#                    <td class="col-auto"><em><b>Attack Action Name</b></em></td>#}
+{#                    <td class="col-auto"><em><b>Action Execution Probability</b></em></td>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                {% for current_state, action_pred_attrb in attack_action_prediction.items %}#}
+{#                    {% for key, val in action_pred_attrb.items %}#}
+{#                        <tr id="attack_action_prediction_row">#}
+{#                            <td class="col-auto">#}
+{#                                <input type="text" id="current_state" class="form-control"#}
+{#                                       value="{{ current_state }}"/>#}
+{#                            </td>#}
+{#                            <td class="col-auto">#}
+{#                                <input type="text" id="attack_action" class="form-control" value="{{ key }}"/>#}
+{#                            </td>#}
+{#                            <td class="col-auto">#}
+{#                                <input type="text" id="probability" class="form-control" value="{{ val.probability }}"/>#}
+{#                            </td>#}
+{#                            <td>#}
+{#                                <input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete">#}
+{#                            </td>#}
+{#                            <td class="col-auto"><a class="deleteRow"></a></td>#}
+{#                        </tr>#}
+{#                    {% endfor %}#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#                <tfoot>#}
+{#                <tr>#}
+{#                    <td class="col-auto justify-content-center text-center"  style="text-align: center;">#}
+{#                        <input type="button" class="btn btn-primary btn-block "#}
+{#                               id="id_attack_action_prediction_table_addrow"#}
+{#                               value="Add New Attack Action"/>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                </tr>#}
+{#                </tfoot>#}
+{#            </table>#}
             <input type="button" class="btn btn-primary btn-lg active" id="button_generate_plan" value="Generate New Plan"/>
             <button class="btn btn-primary spinner-hide" type="button" disabled id="id_loading_button">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
