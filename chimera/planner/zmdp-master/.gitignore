@@ -1,6 +1,6 @@
 obj/
 lib/
-bin/
+#bin/
 /include/
 /src/parsers/include/
 /src/tests/testTmp/
