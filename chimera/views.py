@@ -46,7 +46,7 @@ def index(request):
     }
     logger.info("Index called")
     # return render(request, 'chimera/index.html', context=context)
-    return render(request, 'chimera/index_updated.html', context=context)
+    return render(request, 'chimera/index.html', context=context)
 
 
 def get_planning_parameters_old(request_body):

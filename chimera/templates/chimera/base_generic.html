@@ -6,9 +6,6 @@
     {% block title %}<title>Chimera</title>{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {#    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"#}
-    {#            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"#}
-    {#            crossorigin="anonymous"></script>#}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -19,24 +16,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-    {#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"#}
-    {#          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">#}
-    <!-- Add additional CSS in static file -->
-    {#    {% load static %}#}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {#    <script src="https://code.jquery.com/jquery-3.6.0.min.js"#}
-    {#            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>#}
-    {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js"#}
-    {#            integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q=="#}
-    {#            crossorigin="anonymous" referrerpolicy="no-referrer"></script>#}
-
-    {#    <link rel="stylesheet" href="{% static 'css/bootstrap-multiselect.min.css' %}" type="text/css">#}
-    {#    <script type="text/javascript" src="{% static 'js/bootstrap-multiselect.min.js' %}"></script>#}
 </head>
 <body>
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">CHIMERA</a>
+        <a class="navbar-brand" href="/">CHIMERA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/index/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/generate-deception-graph/" id="id_generate_plan">Generate Deception
@@ -54,22 +39,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/recoaction/">Action Recommendation</a>
                 </li>
-
-                {#                <li class="nav-item dropdown">#}
-                {#                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"#}
-                {#                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-                {#                        Dropdown#}
-                {#                    </a>#}
-                {#                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
-                {#                        <a class="dropdown-item" href="#">Action</a>#}
-                {#                        <a class="dropdown-item" href="#">Another action</a>#}
-                {#                        <div class="dropdown-divider"></div>#}
-                {#                        <a class="dropdown-item" href="#">Something else here</a>#}
-                {#                    </div>#}
-                {#                </li>#}
-                {#                <li class="nav-item">#}
-                {#                    <a class="nav-link disabled" href="#">Disabled</a>#}
-                {#                </li>#}
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -79,41 +48,24 @@
     </nav>
 
 
-    {#    <div class="row">#}
-    {#        <div class="col-sm-2">#}
-    {#            {% block sidebar %}#}
-    {#                <ul class="sidebar-nav">#}
-    {#                    <li><a href="">Chimera#}
-    {#                        Home</a></li>#}
-    {#                    <li><a href="">Deception Planning</a></li>#}
-    {#                    <li><a href="">Action Recommendation</a></li>#}
-    {#                </ul>#}
-    {#            {% endblock %}#}
-    {#        </div>#}
+    <div class="jumbotron justify-content-center text-center">
+        <h2 class="display-5">CHIMERA: Autonomous Planning and Orchestration for Malware Deception</h2>
+        <p class="lead">CHIMERA is a theoretical framework for an autonomous goal-oriented cyber
+            deception planner, that optimizes deception decision-making. <br>We use the following Deception Graph to
+            demonstrate our deception planning.</p>
+        <figure class="figure">
+            <img src="{% static 'images/updated_info_stealer_deception_graph.png' %}" class="img-fluid" alt="Responsive image"
+                 width="60%">
+            <figcaption class="figure-caption text-center " style="font-size: x-large">Fig: Deception Graph for
+                Information Stealer.
+            </figcaption>
+        </figure>
 
-    {#        <div class="col-sm-10  justify-content-center text-center">#}
-    {#    <div class="jumbotron justify-content-center text-center">#}
-    {#        <h2 class="display-5">CHIMERA: Autonomous Planning and Orchestration for Malware Deception</h2>#}
-    {#        <p class="lead">CHIMERA is a theoretical framework for an autonomous goal-oriented cyber#}
-    {#            deception planner, that optimizes deception decision-making. <br>We use the following Deception Graph to#}
-    {#            demonstrate our deception planning.</p>#}
-    {#        <figure class="figure">#}
-    {#            <img src="{% static 'images/info_stealer_deception_graph.png' %}" class="img-fluid" alt="Responsive image"#}
-    {#                 width="80%">#}
-    {#            <figcaption class="figure-caption text-center " style="font-size: x-large">Fig: Deception Graph for#}
-    {#                Information Stealer.#}
-    {#            </figcaption>#}
-    {#        </figure>#}
-    {##}
-    {##}
-    {#        {% block content %}{% endblock %}#}
-    {#    </div>#}
-    {% block content %}{% endblock %}
 
-    {#        </div>#}
+        {% block content %}{% endblock %}
 
-    {#        <div class="col-sm-10 justify-content-center">{% block content %}{% endblock %}</div>#}
-    {#    </div>#}
+    </div>
+
 </div>
 </body>
 </html>
